@@ -23,7 +23,7 @@ pipeline {
             steps {
                 script {
                     echo "Pushing Docker Image to Docker Hub Repo..."
-                    gv.pushImage()
+                   // gv.pushImage()
                 }
             }
         }
