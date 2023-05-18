@@ -21,7 +21,7 @@ def deployImage() {
     echo "Deploying the application to EC2..."
     def dockerComposeCmd = 'docker compose -f docker-compose.yaml up --detach' 
     sshagent(['ec-key']) {
-        sh "scp docker-compose.yaml ec2-user@18.130.225.104:/home/ec2-user"
+        sh "scp -o StrictHostKeyChecking=no docker-compose.yaml ec2-user@18.130.225.104:/home/ec2-user"
         sh "ssh -o StrictHostKeyChecking=no ec2-user@18.130.225.104 ${dockerComposeCmd}"
     }
 } 
