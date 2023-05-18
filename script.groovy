@@ -18,7 +18,7 @@ def pushImage() {
 //Pull Docker Image from DockerHub and Deploy Image to Amazon EC2 Server
 
 def deployImage() {
-    echo "Deploying the application to EC2...
+    echo "Deploying the application to EC2..."
     def dockerComposeCmd = 'docker compose -f docker-compose.yaml up --detach' 
     sshagent(['ec2-pem-key']) {
         sh "scp docker-compose.yaml ec2-user@18.130.225.104:/home/ec2-user"
