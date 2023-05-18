@@ -2,18 +2,18 @@
 
 def buildImage() {
     echo "Build Docker Image with Dockerfile..."
-    sh 'docker build -t oluwaseuna/demo-app:nodeapp .'
+    sh 'docker build -t nodeapp:1 .'
 }
 
 //Push Docker Image to DockerHub Repository
 
-def pushImage() {
-    echo "Pushing Docker Image to Docker Hub Repo..."
-    withCredentials([usernamePassword(credentialsId: 'Docker-hub-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-        sh "echo $PASS | docker login -u $USER --password-stdin"
-        sh 'docker push oluwaseuna/demo-app:nodeapp'
-    }
-} 
+//def pushImage() {
+   // echo "Pushing Docker Image to Docker Hub Repo..."
+   // withCredentials([usernamePassword(credentialsId: 'Docker-hub-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+       // sh "echo $PASS | docker login -u $USER --password-stdin"
+       // sh 'docker push oluwaseuna/demo-app:nodeapp'
+//    }
+//} 
 
 //Pull Docker Image from DockerHub and Deploy Image to Amazon EC2 Server
 
