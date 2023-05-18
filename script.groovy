@@ -18,12 +18,11 @@ def pushImage() {
 //Pull Docker Image from DockerHub and Deploy Image to Amazon EC2 Server
 
 def deployImage() {
-    echo "Deploying the application to EC2..."
-    def ec2Instance = 'ec2-user@18.130.225.104'
+    echo "Deploying the application to EC2...
     def dockerComposeCmd = 'docker compose -f docker-compose.yaml up --detach' 
     sshagent(['ec2-pem-key']) {
-        sh "scp docker-compose.yaml ${ec2Instance}:/home/ec2-user"
-        sh "ssh -o StrictHostKeyChecking=no ${ec2Instance} ${dockerComposeCmd}"
+        sh "scp docker-compose.yaml ec2-user@18.130.225.104:/home/ec2-user"
+        sh "ssh -o StrictHostKeyChecking=no ec2-user@18.130.225.104 ${dockerComposeCmd}"
     }
 } 
 return this
