@@ -1,7 +1,7 @@
 version: '3'
 services:
   my-app:
-    image: oluwaseuna/demo-app:nodeapp
+    image: oluwaseuna/demo-app:react-nodejs-app
     ports:
      - 3000:3000
   mongodb:
